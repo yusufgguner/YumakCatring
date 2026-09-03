@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   YUMAK CATERING — Tasarım Token'ları
+   PROJE-PLANI.md Bölüm 11 ile birebir. Kontrast değerleri WCAG AA doğrulandı.
+   ========================================================================= */
+
+@theme {
+  /* ---------- Renk: mürekkep / siyah / koyu gri ---------- */
+  --color-ink-950: #0c0a09; /* ana metin        · 18.9:1 / beyaz */
+  --color-ink-900: #1c1917; /* koyu yüzey, footer, bant */
+  --color-ink-800: #292524;
+  --color-ink-700: #44403c; /* koyu gri */
+  --color-ink-500: #78716c; /* ikincil metin    ·  4.6:1 / beyaz */
+  --color-ink-300: #d6d3d1; /* kenarlık */
+  --color-ink-200: #e7e5e4;
+
+  /* ---------- Renk: gold (aksan) ---------- */
+  --color-gold-700: #8a6118;
+  --color-gold-600: #a16207; /* ana aksan        ·  4.9:1 / beyaz */
+  --color-gold-400: #c9a227; /* koyu zemin üstü  ·  7.4:1 / ink-900 */
+  --color-gold-100: #f5ebd3;
+
+  /* ---------- Renk: soft bej (zemin) ---------- */
+  --color-beige-100: #f5f0e8;
+  --color-beige-50: #faf8f4;
+
+  /* ---------- Renk: premium yeşil (yalnız rozet/onay) ---------- */
+  --color-green-900: #1b3a2f; /* 12.8:1 / beyaz */
+  --color-green-600: #2e6b4f;
+  --color-green-100: #e7f0ea;
+
+  /* ---------- Renk: durum ---------- */
+  --color-danger: #b3261e;
+  --color-danger-bg: #fbeae9;
+
+  /* ---------- Tipografi ---------- */
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --text-eyebrow: 0.6875rem;
+  --text-micro: 0.75rem;
+
+  /* ---------- Boşluk: 8px tabanlı ---------- */
+  --spacing-section-sm: 4rem; /* mobil    64px */
+  --spacing-section-md: 6rem; /* tablet   96px */
+  --spacing-section-lg: 8rem; /* masaüstü 128px */
+  --spacing-section-xl: 10rem; /* geniş   160px */
+
+  /* ---------- Container ---------- */
+  --container-site: 80rem; /* 1280px */
+  --container-wide: 85rem; /* 1360px */
+  --container-prose: 47.5rem; /* 760px  */
+
+  /* ---------- Köşe yarıçapı: keskin = pahalı ---------- */
+  --radius-btn: 2px;
+  --radius-card: 0px;
+  --radius-input: 2px;
+  --radius-modal: 4px;
+
+  /* ---------- Gölge: az ve yumuşak ---------- */
+  --shadow-sm: 0 1px 2px rgb(12 10 9 / 0.04);
+  --shadow-md: 0 8px 30px rgb(12 10 9 / 0.06);
+  --shadow-lg: 0 24px 70px rgb(12 10 9 / 0.12);
+  --shadow-gold: 0 8px 28px rgb(161 98 7 / 0.2);
+
+  /* ---------- Kırılım noktaları ---------- */
+  --breakpoint-2xl: 1440px;
+}
+
+/* =========================================================================
+   TEMEL
+   ========================================================================= */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* sticky header yüksekliği kadar pay */
+    scroll-padding-top: 6.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--color-ink-950);
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.15;
+    text-wrap: balance;
+    color: var(--color-ink-950);
+  }
+
+  /* Başlıklar uppercase + geniş harf aralığı — editoryal lüks kodu */
+  h1 {
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+  }
+  h2 {
+    font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+  h3 {
+    font-size: clamp(1.25rem, 2vw, 1.625rem);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  h4 {
+    font-size: 1.125rem;
+    letter-spacing: 0.02em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Focus halkası asla kaldırılmaz — WCAG 2.4.7 */
+  :focus-visible {
+    outline: 2px solid var(--color-gold-600);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-ink-900);
+    color: #fff;
+  }
+
+  /* Görsellerde CLS koruması */
+  img,
+  video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* =========================================================================
+   YARDIMCI SINIFLAR
+   ========================================================================= */
+
+@layer components {
+  /* Bölüm üstü küçük etiket */
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-ink-500);
+  }
+
+  /* Süs: hairline + elmas + hairline */
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    color: var(--color-gold-600);
+  }
+  .ornament::before,
+  .ornament::after {
+    content: "";
+    width: 46px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.45;
+  }
+  .ornament > i {
+    width: 5px;
+    height: 5px;
+    background: currentColor;
+    transform: rotate(45deg);
+  }
+
+  /* Okunabilir metin sütunu — 60-75 karakter */
+  .prose-width {
+    max-width: 68ch;
+  }
+}
+
+/* =========================================================================
+   HAREKET TERCİHİ
+   Kullanıcı hareketi azaltmışsa: parallax, pin, perde, sayaç kapanır.
+   İçerik her koşulda görünür kalır.
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

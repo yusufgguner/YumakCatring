@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "yumak",
-      "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "5179", "--directory", "C:/Uygulamalar/YumakCatring"],
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "5179"],
       "port": 5179
     }
   ]

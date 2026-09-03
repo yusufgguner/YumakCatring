@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-# TODO: alan adı kesinleşince güncelle
-Sitemap: https://www.yumakcatering.com/sitemap.xml
