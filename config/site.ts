@@ -31,8 +31,7 @@ export const company = {
     e164: "+905384466938",
     whatsapp: "905384466938",
   },
-  // TODO: gerçek e-posta
-  email: "info@yumakcatering.com",
+  // E-posta kanalı bilinçli olarak yok: tüm talepler WhatsApp'a yönlenir.
   // TODO: gerçek adres — LocalBusiness schema ve yerel SEO için kritik
   address: {
     street: "",

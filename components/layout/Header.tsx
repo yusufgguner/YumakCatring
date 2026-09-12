@@ -7,12 +7,13 @@ import { Menu, X, Phone } from "lucide-react";
 import { company } from "@/config/site";
 import { serviceGroups, servicesByGroup } from "@/constants/services";
 
+// Ana sayfa bölümlerine "/#" ile bağlanır — alt sayfalardan da çalışsın.
 const nav = [
-  { label: "Hizmetler", href: "#hizmetler", mega: true },
-  { label: "Hakkımızda", href: "#hakkimizda" },
-  { label: "Organizasyonlar", href: "#organizasyonlar" },
-  { label: "Galeri", href: "#galeri" },
-  { label: "İletişim", href: "#iletisim" },
+  { label: "Hizmetler", href: "/#hizmetler", mega: true },
+  { label: "Hakkımızda", href: "/#hakkimizda" },
+  { label: "Organizasyonlar", href: "/#organizasyonlar" },
+  { label: "Galeri", href: "/#galeri" },
+  { label: "Teklif Al", href: "/teklif-al" },
 ];
 
 export function Header() {
@@ -166,13 +167,13 @@ export function Header() {
         </ul>
 
         <div className="mt-10 grid gap-3">
-          <a
-            href="#iletisim"
+          <Link
+            href="/teklif-al"
             onClick={() => setOpen(false)}
             className="flex min-h-[54px] items-center justify-center bg-gold-600 text-eyebrow font-medium uppercase tracking-[0.22em] text-white"
           >
             Teklif Al
-          </a>
+          </Link>
           <a
             href={company.phone.href}
             className="flex min-h-[54px] items-center justify-center gap-2 border border-ink-900 text-eyebrow font-medium uppercase tracking-[0.22em]"

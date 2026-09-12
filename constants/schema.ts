@@ -22,7 +22,6 @@ export const organizationSchema = {
         height: 398,
       },
       telephone: company.phone.e164,
-      email: company.email,
       // Sosyal hesaplar girilene kadar anahtar hiç yazılmasın — boş dizi
       // ("sameAs":[]) şemada anlamsız gürültü. config/site.ts > social doldur.
       ...(socialProfiles.length ? { sameAs: socialProfiles } : {}),
@@ -56,7 +55,6 @@ export const localBusinessSchema = {
   description: site.description,
   url: site.url,
   telephone: company.phone.e164,
-  email: company.email,
   priceRange: "$$$",
   servesCuisine: ["Türk Mutfağı", "Dünya Mutfağı", "Kokteyl"],
   image: `${site.url}/images/og/og-default.jpg`,

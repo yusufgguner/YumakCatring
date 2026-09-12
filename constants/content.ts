@@ -73,9 +73,9 @@ export const galleryItems = [
   { file: "gal-01", alt: "Kokteyl davetinde canapé ve finger food sunumu" },
   { file: "gal-08", alt: "Kurumsal davet için hazırlanmış masa düzeni" },
   { file: "gal-05", alt: "Chafing dish ile sıcak yemek servisi" },
-  { file: "gal-03", alt: "Canapé tabağı yakın plan detay" },
+  { file: "gal-03", alt: "Izgara et ve yeşillikle hazırlanmış servis tabakları" },
   { file: "gal-10", alt: "Yumak Catering merkez mutfağında hazırlık" },
-  { file: "gal-04", alt: "Etkinlik öncesi büfe kurulumu" },
+  { file: "gal-04", alt: "Meyve tabağı ve krep ile kahvaltı sunumu" },
 ];
 
 export const faq: FaqItem[] = [

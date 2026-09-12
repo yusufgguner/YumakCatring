@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, MessageCircle, ArrowRight, MapPin, Clock } from "lucide-react";
 
 /* Marka ikonları lucide'dan kaldırıldı — satır içi SVG kullanıyoruz */
 function InstagramIcon() {
@@ -19,7 +19,7 @@ function FacebookIcon() {
     </svg>
   );
 }
-import { company, site } from "@/config/site";
+import { company, site, whatsappUrl } from "@/config/site";
 import { serviceGroups, servicesByGroup } from "@/constants/services";
 
 export function Footer() {
@@ -92,13 +92,24 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail size={16} strokeWidth={1.5} className="shrink-0 text-gold-400" />
+                <MessageCircle size={16} strokeWidth={1.5} className="shrink-0 text-gold-400" />
                 <a
-                  href={`mailto:${company.email}`}
+                  href={whatsappUrl("Merhaba, Yumak Catering için teklif almak istiyorum.")}
+                  target="_blank"
+                  rel="noopener"
                   className="inline-flex min-h-[44px] items-center hover:text-gold-400"
                 >
-                  {company.email}
+                  WhatsApp&apos;tan yazın
                 </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <ArrowRight size={16} strokeWidth={1.5} className="shrink-0 text-gold-400" />
+                <Link
+                  href="/teklif-al"
+                  className="inline-flex min-h-[44px] items-center hover:text-gold-400"
+                >
+                  Teklif formu
+                </Link>
               </li>
               <li className="flex gap-3">
                 <MapPin size={16} strokeWidth={1.5} className="mt-0.5 shrink-0 text-gold-400" />

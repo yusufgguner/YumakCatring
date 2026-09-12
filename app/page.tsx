@@ -19,7 +19,7 @@ import { clients, testimonials, faq, galleryItems } from "@/constants/content";
 import { localBusinessSchema, serviceCatalogSchema } from "@/constants/schema";
 import { company, site, stats, whatsappUrl } from "@/config/site";
 import { ImageStreamHero } from "@/components/ui/image-stream-hero";
-import { BriefForm } from "@/components/ui/BriefForm";
+import { QuoteForm } from "@/components/ui/QuoteForm";
 
 const HERO_IMAGES = [
   { src: "https://images.unsplash.com/photo-1555244162-803834f70033?w=800&q=80", alt: "Açık büfede chafing dish ile sıcak yemek servisi" },
@@ -407,13 +407,13 @@ export default function Home() {
               <p className="eyebrow mt-6">Başlayalım</p>
               <h2 className="mt-4">Kafanızdaki Organizasyon Ne?</h2>
               <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-ink-500">
-                Form doldurmak zorunda değilsiniz. Aklınızdakini kendi
-                cümlelerinizle yazın — gerisini biz sorarız.
+                Üç kısa adımda anlatın, talebiniz WhatsApp üzerinden doğrudan
+                ekibimize ulaşsın.
               </p>
             </Reveal>
 
             <Reveal kind="rise" delay={0.1} className="mt-12">
-              <BriefForm />
+              <QuoteForm />
             </Reveal>
           </div>
         </section>

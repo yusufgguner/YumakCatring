@@ -31,7 +31,8 @@ organizasyonun tamamı tek elden yürütülür.
 
 ## İletişim
 - Telefon: ${company.phone.display} (${company.phone.e164})
-- E-posta: ${company.email}
+- WhatsApp: https://wa.me/${company.phone.whatsapp}
+- Teklif formu: ${site.url}/teklif-al (bilgiler WhatsApp mesajı olarak iletilir)
 - Hizmet bölgesi: ${company.areaServed}
 - Çalışma saatleri: ${company.openingHours.display}
 
@@ -43,6 +44,7 @@ ${groups}
 ## Sayfalar
 - [Ana sayfa](${site.url}/): hizmet özeti, çalışma biçimi, galeri, sık sorulanlar
 - [Hizmetler](${site.url}/hizmetler): tüm catering hizmetlerinin listesi
+- [Teklif Al](${site.url}/teklif-al): üç adımlı teklif formu ve iletişim bilgileri
 - [Site haritası](${site.url}/sitemap.xml)
 `;
 

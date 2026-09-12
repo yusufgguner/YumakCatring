@@ -138,7 +138,7 @@ export default async function ServicePage({ params }: Params) {
                 {service.blurb}
               </p>
               <Link
-                href="/#iletisim"
+                href={`/teklif-al?hizmet=${service.slug}`}
                 className="mt-10 inline-flex min-h-[54px] items-center justify-center gap-3 bg-white px-9 text-eyebrow font-medium uppercase tracking-[0.24em] text-ink-950 transition-colors duration-200 hover:bg-gold-600 hover:text-white"
               >
                 Bu Hizmet İçin Teklif Al
@@ -203,7 +203,7 @@ export default async function ServicePage({ params }: Params) {
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/#iletisim"
+                href={`/teklif-al?hizmet=${service.slug}`}
                 className="flex min-h-[54px] w-full items-center justify-center gap-3 bg-gold-600 px-9 text-eyebrow font-medium uppercase tracking-[0.24em] text-white transition-colors duration-200 hover:bg-gold-700 sm:w-auto"
               >
                 Teklif Al

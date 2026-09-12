@@ -18,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
       images: [`${site.url}/images/og/og-default.jpg`],
     },
+    {
+      url: `${site.url}/teklif-al`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
   ];
 
   const serviceRoutes: MetadataRoute.Sitemap = services.map((s) => ({
