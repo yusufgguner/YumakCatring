@@ -24,7 +24,7 @@ import { serviceGroups, servicesByGroup } from "@/constants/services";
 
 export function Footer() {
   return (
-    <footer className="bg-ink-950 text-white/65">
+    <footer className="bg-ink-950 pb-[env(safe-area-inset-bottom)] text-white/65 lg:pb-0">
       <div className="mx-auto max-w-[85rem] px-5 py-20 md:px-10">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           {/* Marka */}
@@ -81,15 +81,22 @@ export function Footer() {
           <div>
             <p className="eyebrow text-gold-400">İletişim</p>
             <ul className="mt-5 space-y-4 text-sm">
-              <li className="flex gap-3">
-                <Phone size={16} strokeWidth={1.5} className="mt-0.5 shrink-0 text-gold-400" />
-                <a href={company.phone.href} className="hover:text-gold-400">
+              <li className="flex items-center gap-3">
+                <Phone size={16} strokeWidth={1.5} className="shrink-0 text-gold-400" />
+                {/* dokunma alanı 44px — WCAG 2.5.5 */}
+                <a
+                  href={company.phone.href}
+                  className="inline-flex min-h-[44px] items-center hover:text-gold-400"
+                >
                   {company.phone.display}
                 </a>
               </li>
-              <li className="flex gap-3">
-                <Mail size={16} strokeWidth={1.5} className="mt-0.5 shrink-0 text-gold-400" />
-                <a href={`mailto:${company.email}`} className="hover:text-gold-400">
+              <li className="flex items-center gap-3">
+                <Mail size={16} strokeWidth={1.5} className="shrink-0 text-gold-400" />
+                <a
+                  href={`mailto:${company.email}`}
+                  className="inline-flex min-h-[44px] items-center hover:text-gold-400"
+                >
                   {company.email}
                 </a>
               </li>
@@ -105,14 +112,14 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-center gap-6 border-t border-white/10 pt-10 text-xs text-white/40 sm:flex-row sm:justify-between">
+        <div className="mt-16 flex flex-col items-center gap-6 border-t border-white/10 pt-10 text-xs text-white/60 sm:flex-row sm:justify-between">
           <span>© {new Date().getFullYear()} {site.name}. Tüm hakları saklıdır.</span>
           
           <a
             href="https://linerasoft.com" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="group flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 transition-all duration-300 hover:border-gold-500/50 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]"
+            className="group flex min-h-[44px] items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 transition-all duration-300 hover:border-gold-500/50 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]"
           >
             <span className="font-medium tracking-wide text-white/60 transition-colors group-hover:text-white/90">
               Geliştiren
@@ -120,7 +127,7 @@ export function Footer() {
             <div className="flex items-center gap-2 border-l border-white/20 pl-3 transition-colors group-hover:border-gold-500/30">
               <Image 
                 src="/images/linerasoft-logo.png" 
-                alt="LineraSoft Logo" 
+                alt="LineraSoft" 
                 width={20} 
                 height={20} 
                 className="h-5 w-auto object-contain mix-blend-screen transition-transform duration-300 group-hover:scale-110"

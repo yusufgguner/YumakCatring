@@ -11,13 +11,13 @@
   --color-ink-900: #1c1917; /* koyu yüzey, footer, bant */
   --color-ink-800: #292524;
   --color-ink-700: #44403c; /* koyu gri */
-  --color-ink-500: #78716c; /* ikincil metin    ·  4.6:1 / beyaz */
+  --color-ink-500: #6b625c; /* ikincil metin    ·  5.95 beyaz / 5.25 bej-100 */
   --color-ink-300: #d6d3d1; /* kenarlık */
   --color-ink-200: #e7e5e4;
 
   /* ---------- Renk: gold (aksan) ---------- */
-  --color-gold-700: #8a6118;
-  --color-gold-600: #a16207; /* ana aksan        ·  4.9:1 / beyaz */
+  --color-gold-700: #7d4c05; /* hover — koyu */
+  --color-gold-600: #965c07; /* ana aksan        ·  5.48 beyaz / 4.83 bej-100 */
   --color-gold-400: #c9a227; /* koyu zemin üstü  ·  7.4:1 / ink-900 */
   --color-gold-100: #f5ebd3;
 
@@ -38,8 +38,19 @@
   --font-display: var(--font-playfair), Georgia, serif;
   --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  --text-eyebrow: 0.6875rem;
-  --text-micro: 0.75rem;
+  --text-eyebrow: 0.75rem; /* 12px — uppercase + geniş tracking */
+  --text-micro: 0.8125rem; /* 13px */
+
+  /* Tailwind ölçeğini bir kademe büyüt: gövde metni 14px fazla küçüktü.
+     Satır yüksekliği oranları da açıldı — uzun Türkçe cümleler için. */
+  --text-xs: 0.8125rem; /* 12 → 13px */
+  --text-xs--line-height: 1.55;
+  --text-sm: 0.9375rem; /* 14 → 15px */
+  --text-sm--line-height: 1.7;
+  --text-base: 1.0625rem; /* 16 → 17px */
+  --text-base--line-height: 1.75;
+  --text-lg: 1.1875rem; /* 18 → 19px */
+  --text-lg--line-height: 1.7;
 
   /* ---------- Boşluk: 8px tabanlı ---------- */
   --spacing-section-sm: 4rem; /* mobil    64px */
@@ -82,10 +93,13 @@
 
   body {
     font-family: var(--font-body);
-    font-weight: 300;
-    line-height: 1.7;
+    /* 300 ince ve soluk duruyordu; 400 hem okunakli hem hala hafif */
+    font-weight: 400;
+    font-size: var(--text-base);
+    line-height: 1.75;
     color: var(--color-ink-950);
-    background: #ffffff;
+    /* Saf beyaz yerine sicak kirik beyaz — sayfa daha az sert */
+    background: var(--color-beige-50);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;

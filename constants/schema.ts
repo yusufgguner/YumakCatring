@@ -1,5 +1,11 @@
 import { site, company } from "@/config/site";
 
+/** Dolu olan sosyal medya adresleri — boşlar şemaya girmez */
+const socialProfiles: string[] = [
+  company.social.instagram,
+  company.social.facebook,
+].filter((u) => u.length > 0);
+
 /** Her sayfada bulunan site geneli varlıklar */
 export const organizationSchema = {
   "@context": "https://schema.org",
@@ -17,8 +23,9 @@ export const organizationSchema = {
       },
       telephone: company.phone.e164,
       email: company.email,
-      // TODO: sosyal medya adresleri netleşince doldur — Google bilgi paneli için
-      sameAs: [company.social.instagram, company.social.facebook].filter(Boolean),
+      // Sosyal hesaplar girilene kadar anahtar hiç yazılmasın — boş dizi
+      // ("sameAs":[]) şemada anlamsız gürültü. config/site.ts > social doldur.
+      ...(socialProfiles.length ? { sameAs: socialProfiles } : {}),
       contactPoint: [
         {
           "@type": "ContactPoint",
@@ -98,5 +105,50 @@ export function serviceCatalogSchema(
         areaServed: { "@type": "City", name: company.address.city },
       },
     })),
+  };
+}
+
+/**
+ * Breadcrumb — Google'ın SERP'te yol izini göstermesi için.
+ * Yol parçaları site.url ile mutlaklaştırılır.
+ */
+export function breadcrumbSchema(trail: { name: string; path: string }[]) {
+  return {
+    "@type": "BreadcrumbList",
+    itemListElement: trail.map((t, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: t.name,
+      item: `${site.url}${t.path === "/" ? "" : t.path}`,
+    })),
+  };
+}
+
+/**
+ * Hizmet listeleme sayfası — CollectionPage + ItemList.
+ * Arama motoruna sayfanın bir koleksiyon olduğunu ve hangi 17 hizmeti
+ * listelediğini bildirir; tekil hizmet sayfalarına giden yolu güçlendirir.
+ */
+export function serviceListSchema(
+  items: { name: string; slug: string; blurb: string }[],
+) {
+  return {
+    "@type": "CollectionPage",
+    "@id": `${site.url}/hizmetler#collection`,
+    url: `${site.url}/hizmetler`,
+    name: "Catering Hizmetlerimiz",
+    description: `${site.name} — İstanbul genelinde ${items.length} catering hizmeti.`,
+    isPartOf: { "@id": `${site.url}/#website` },
+    about: { "@id": `${site.url}/#organization` },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: items.length,
+      itemListElement: items.map((s, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: s.name,
+        url: `${site.url}/hizmetler/${s.slug}`,
+      })),
+    },
   };
 }

@@ -19,18 +19,19 @@ import { clients, testimonials, faq, galleryItems } from "@/constants/content";
 import { localBusinessSchema, serviceCatalogSchema } from "@/constants/schema";
 import { company, site, stats, whatsappUrl } from "@/config/site";
 import { ImageStreamHero } from "@/components/ui/image-stream-hero";
+import { BriefForm } from "@/components/ui/BriefForm";
 
 const HERO_IMAGES = [
-  { src: "https://images.unsplash.com/photo-1555244162-803834f70033?w=800&q=80", alt: "Catering setup" },
-  { src: "https://images.unsplash.com/photo-1414235077428-338988a2e8c0?w=800&q=80", alt: "Fine dining restaurant" },
-  { src: "https://images.unsplash.com/photo-1533777324565-a040eb52facd?w=800&q=80", alt: "Chef plating" },
-  { src: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80", alt: "Fresh food" },
-  { src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80", alt: "Gourmet meal" },
-  { src: "https://images.unsplash.com/photo-1478144592103-25e218a04891?w=800&q=80", alt: "Delicious pizza" },
-  { src: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800&q=80", alt: "Premium meat" },
-  { src: "https://images.unsplash.com/photo-1493770348161-369560ae357d?w=800&q=80", alt: "Healthy eating" },
-  { src: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80", alt: "Colorful salad" },
-  { src: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80", alt: "Grilling" },
+  { src: "https://images.unsplash.com/photo-1555244162-803834f70033?w=800&q=80", alt: "Açık büfede chafing dish ile sıcak yemek servisi" },
+  { src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80", alt: "Kurumsal davet için hazırlanmış yemek masası" },
+  { src: "https://images.unsplash.com/photo-1533777324565-a040eb52facd?w=800&q=80", alt: "Şefin tabak sunumunu tamamlaması" },
+  { src: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80", alt: "Taze sebzelerle hazırlanmış salata kasesi" },
+  { src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80", alt: "Ana yemek servisinde et sunumu" },
+  { src: "https://images.unsplash.com/photo-1478144592103-25e218a04891?w=800&q=80", alt: "Fırından yeni çıkmış sıcak ikram" },
+  { src: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800&q=80", alt: "Kokteyl davetinde finger food tabağı" },
+  { src: "https://images.unsplash.com/photo-1493770348161-369560ae357d?w=800&q=80", alt: "Kahvaltı ve ikram büfesi düzeni" },
+  { src: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80", alt: "Mevsim sebzeleriyle renkli salata sunumu" },
+  { src: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80", alt: "Izgara ve mangal çeşitleri" },
 ];
 
 const reasons = [
@@ -104,7 +105,11 @@ export default function Home() {
           images={HERO_IMAGES}
           className="relative flex min-h-[100svh] items-center justify-center bg-ink-950 text-center"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-ink-950/85 via-ink-950/60 to-ink-950/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink-950/90 via-ink-950/72 to-ink-950/95" />
+          <div
+            aria-hidden
+            className="absolute inset-0 [background:radial-gradient(62%_52%_at_50%_46%,rgb(12_10_9/0.66)_0%,rgb(12_10_9/0.28)_55%,transparent_100%)]"
+          />
 
           <div className="relative z-10 mx-auto max-w-4xl px-6 pt-24">
             <Reveal kind="fade">
@@ -113,7 +118,7 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal kind="fade" delay={0.08}>
-              <p className="eyebrow mt-7 text-white/80 drop-shadow-md">
+              <p className="eyebrow mt-7 text-white/85 drop-shadow-md">
                 İstanbul · Premium Catering
               </p>
             </Reveal>
@@ -123,7 +128,7 @@ export default function Home() {
               </h1>
             </Reveal>
             <Reveal kind="fade" delay={0.24}>
-              <p className="mx-auto mt-8 max-w-xl text-[1rem] leading-relaxed text-white/90 drop-shadow-md">
+              <p className="mx-auto mt-8 max-w-xl text-[1.0625rem] leading-[1.75] text-white/92 drop-shadow-md">
                 Kurumsal davetten düğüne, fuardan mevlüt sofrasına — üretimden
                 servise kadar tüm sorumluluğu tek elden üstleniyoruz.
               </p>
@@ -139,7 +144,7 @@ export default function Home() {
                 </Link>
                 <Link
                   href="#hizmetler"
-                  className="flex min-h-[54px] w-full items-center justify-center border border-white/45 px-9 text-eyebrow font-medium uppercase tracking-[0.24em] text-white transition-colors duration-200 hover:border-white hover:bg-white/10 sm:w-auto"
+                  className="flex min-h-[54px] w-full items-center justify-center border border-white/60 px-9 text-eyebrow font-medium uppercase tracking-[0.24em] text-white transition-colors duration-200 hover:border-white hover:bg-white/10 sm:w-auto"
                 >
                   Hizmetleri İncele
                 </Link>
@@ -153,7 +158,9 @@ export default function Home() {
           </div>
         </ImageStreamHero>
 
-        {/* ═══════════════ 2. GÜVEN — RAKAMLAR ═══════════════ */}
+        {/* ═══════════════ 2. GÜVEN — RAKAMLAR ═══════════════
+            Gerçek rakamlar config/site.ts > stats içine girilene kadar gizli. */}
+        {stats.length > 0 ? (
         <section className="border-b border-ink-200 bg-ink-950">
           <Stagger className="mx-auto grid max-w-[85rem] grid-cols-2 gap-y-12 px-5 py-20 md:grid-cols-4 md:px-10">
             {stats.map((s) => (
@@ -166,6 +173,7 @@ export default function Home() {
             ))}
           </Stagger>
         </section>
+        ) : null}
 
         {/* ═══════════════ 3. NEDEN YUMAK ═══════════════ */}
         <section id="hakkimizda" className="px-5 py-24 md:px-10 md:py-32">
@@ -197,7 +205,7 @@ export default function Home() {
         </section>
 
         {/* ═══════════════ 4. HİZMETLER ═══════════════ */}
-        <section id="hizmetler" className="bg-beige-50 px-5 py-24 md:px-10 md:py-32">
+        <section id="hizmetler" className="bg-beige-100 px-5 py-24 md:px-10 md:py-32">
           <div className="mx-auto max-w-[85rem]">
             <Reveal kind="fade" className="mx-auto max-w-2xl text-center">
               <div className="ornament">
@@ -321,7 +329,7 @@ export default function Home() {
         </section>
 
         {/* ═══════════════ 7. REFERANSLAR ═══════════════ */}
-        <section className="border-y border-ink-200 bg-beige-50 px-5 py-16 md:px-10">
+        <section className="border-y border-ink-200 bg-beige-100 px-5 py-16 md:px-10">
           <Reveal kind="fade" className="mx-auto max-w-[85rem] text-center">
             <p className="eyebrow">Bizi Tercih Edenler</p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
@@ -337,7 +345,10 @@ export default function Home() {
           </Reveal>
         </section>
 
-        {/* ═══════════════ 8. MÜŞTERİ YORUMLARI ═══════════════ */}
+        {/* ═══════════════ 8. MÜŞTERİ YORUMLARI ═══════════════
+            Gerçek yorumlar constants/content.ts > testimonials içine
+            girilene kadar gizli. */}
+        {testimonials.length > 0 ? (
         <section className="px-5 py-24 md:px-10 md:py-32">
           <div className="mx-auto max-w-[85rem]">
             <Reveal kind="fade" className="mx-auto max-w-2xl text-center">
@@ -351,7 +362,7 @@ export default function Home() {
             <Stagger className="mt-20 grid gap-12 md:grid-cols-3" step={0.08}>
               {testimonials.map((t) => (
                 <StaggerItem key={t.name} className="text-center">
-                  <div className="mx-auto flex size-20 items-center justify-center rounded-full border border-ink-200 bg-beige-50 font-[family-name:var(--font-display)] text-xl tracking-wide text-gold-600">
+                  <div className="mx-auto flex size-20 items-center justify-center rounded-full border border-ink-200 bg-white font-[family-name:var(--font-display)] text-xl tracking-wide text-gold-600">
                     {t.initials}
                   </div>
                   <blockquote className="mx-auto mt-7 max-w-[34ch] text-sm leading-[1.85] text-ink-500">
@@ -368,9 +379,10 @@ export default function Home() {
             </Stagger>
           </div>
         </section>
+        ) : null}
 
         {/* ═══════════════ 9. SSS ═══════════════ */}
-        <section className="bg-beige-50 px-5 py-24 md:px-10 md:py-32">
+        <section className="bg-beige-100 px-5 py-24 md:px-10 md:py-32">
           <div className="mx-auto max-w-3xl">
             <Reveal kind="fade" className="text-center">
               <div className="ornament">
@@ -401,58 +413,18 @@ export default function Home() {
             </Reveal>
 
             <Reveal kind="rise" delay={0.1} className="mt-12">
-              <div className="bg-white p-6 shadow-[var(--shadow-lg)] md:p-10">
-                <label htmlFor="brief" className="sr-only">
-                  Organizasyonunuzu anlatın
-                </label>
-                <textarea
-                  id="brief"
-                  rows={5}
-                  placeholder="&quot;Mart ayında 150 kişilik bir nişan düşünüyoruz, mekân Bahçelievler'de, bütçemiz henüz net değil…&quot;"
-                  className="w-full resize-y border border-ink-300 bg-white p-4 text-sm leading-relaxed text-ink-950 outline-none transition-colors placeholder:text-ink-300 focus:border-gold-600"
-                />
-
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  <a
-                    href={whatsappUrl(
-                      "Merhaba, organizasyonum için teklif almak istiyorum. Detaylar: ",
-                    )}
-                    target="_blank"
-                    rel="noopener"
-                    className="flex min-h-[54px] flex-1 items-center justify-center gap-3 bg-gold-600 px-8 text-eyebrow font-medium uppercase tracking-[0.24em] text-white transition-colors duration-200 hover:bg-gold-700"
-                  >
-                    Anlattım, Teklif Gelsin
-                    <ArrowRight size={15} strokeWidth={1.5} />
-                  </a>
-                  <a
-                    href={whatsappUrl(
-                      "Merhaba, Yumak Catering için teklif almak istiyorum.",
-                    )}
-                    target="_blank"
-                    rel="noopener"
-                    className="flex min-h-[54px] items-center justify-center gap-3 border border-ink-900 px-8 text-eyebrow font-medium uppercase tracking-[0.24em] transition-colors duration-200 hover:bg-ink-900 hover:text-white"
-                  >
-                    <MessageCircle size={15} strokeWidth={1.5} />
-                    WhatsApp
-                  </a>
-                </div>
-
-                <p className="mt-6 text-xs text-ink-500">
-                  Ya da doğrudan arayın:{" "}
-                  <a
-                    href={company.phone.href}
-                    className="font-medium text-gold-600 underline underline-offset-4"
-                  >
-                    {company.phone.display}
-                  </a>
-                </p>
-              </div>
+              <BriefForm />
             </Reveal>
           </div>
         </section>
       </main>
 
       <Footer />
+
+      {/* Sabit mobil çubuk footer'ın son satırını kapatıyordu — çubuk
+          yüksekliği kadar yer ayır. Cihaz güvenli alanı Footer'ın
+          pb-[env(safe-area-inset-bottom)] payından geliyor. */}
+      <div aria-hidden className="h-[3.625rem] bg-ink-950 lg:hidden" />
 
       {/* Mobil hızlı iletişim çubuğu */}
       <nav

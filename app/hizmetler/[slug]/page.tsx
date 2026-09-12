@@ -6,6 +6,7 @@ import { Check, ArrowRight, MessageCircle } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { ServiceDetail } from "@/components/ui/ServiceDetail";
 import { services } from "@/constants/services";
 import { company, site, whatsappUrl } from "@/config/site";
 
@@ -23,7 +24,18 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: `${s.name} İstanbul`,
     description: s.blurb,
     alternates: { canonical: `/hizmetler/${s.slug}` },
-    openGraph: { title: `${s.name} | ${site.name}`, description: s.blurb, images: [s.image] },
+    openGraph: {
+      type: "website",
+      url: `${site.url}/hizmetler/${s.slug}`,
+      title: `${s.name} | ${site.name}`,
+      description: s.blurb,
+      // Hizmet fotoğrafı 1200x630 değil; paylaşım kartı için doğru orandaki
+      // varsayılan görsel ilk sırada, hizmete özel görsel yedeği ikinci.
+      images: [
+        { url: "/images/og/og-default.jpg", width: 1200, height: 630, alt: s.name },
+        { url: s.image, alt: s.name },
+      ],
+    },
   };
 }
 
@@ -51,12 +63,20 @@ export default async function ServicePage({ params }: Params) {
     "@graph": [
       {
         "@type": "Service",
+        "@id": `${site.url}/hizmetler/${service.slug}#service`,
         name: service.name,
         serviceType: service.name,
         description: service.blurb,
         url: `${site.url}/hizmetler/${service.slug}`,
-        provider: { "@type": "Organization", name: site.name, url: site.url },
+        image: `${site.url}${service.image}`,
+        // Layout'taki Organization düğümüne bağlan — kopya varlık üretme
+        provider: { "@id": `${site.url}/#organization` },
         areaServed: { "@type": "City", name: "İstanbul" },
+        availableChannel: {
+          "@type": "ServiceChannel",
+          serviceUrl: `${site.url}/hizmetler/${service.slug}`,
+          servicePhone: company.phone.e164,
+        },
       },
       {
         "@type": "BreadcrumbList",
@@ -98,7 +118,7 @@ export default async function ServicePage({ params }: Params) {
             <Reveal kind="fade">
               <nav
                 aria-label="Sayfa yolu"
-                className="text-eyebrow uppercase tracking-[0.2em] text-white/50"
+                className="text-eyebrow uppercase tracking-[0.2em] text-white/65"
               >
                 <Link href="/" className="hover:text-gold-400">
                   Ana Sayfa
@@ -159,6 +179,9 @@ export default async function ServicePage({ params }: Params) {
           </div>
         </section>
 
+        {/* Hizmete özel içerik — constants/services.ts dolduruldukça büyür */}
+        <ServiceDetail service={service} />
+
         {/* CTA bandı */}
         <section className="relative overflow-hidden bg-ink-950 px-5 py-24 md:px-10 md:py-28">
           <Image
@@ -196,7 +219,7 @@ export default async function ServicePage({ params }: Params) {
                 WhatsApp
               </a>
             </div>
-            <p className="mt-8 text-xs text-white/45">
+            <p className="mt-8 text-xs text-white/65">
               Ya da arayın:{" "}
               <a href={company.phone.href} className="text-gold-400 underline underline-offset-4">
                 {company.phone.display}
@@ -206,7 +229,7 @@ export default async function ServicePage({ params }: Params) {
         </section>
 
         {/* Diğer hizmetler */}
-        <section className="bg-beige-50 px-5 py-24 md:px-10 md:py-32">
+        <section className="bg-beige-100 px-5 py-24 md:px-10 md:py-32">
           <div className="mx-auto max-w-[85rem]">
             <Reveal kind="fade" className="text-center">
               <div className="ornament">

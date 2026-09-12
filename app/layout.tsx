@@ -78,6 +78,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang={site.lang} className={`${playfair.variable} ${inter.variable}`}>
+      <head>
+        {/* Hero görselleri dış kaynaktan geliyor — DNS + TLS el sıkışmasını
+            ilk istek beklemeden başlat. */}
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+      </head>
       <body>
         {/* Organization + WebSite — her sayfada, marka varlığı için */}
         <JsonLd data={organizationSchema} />

@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.9,
+      images: [`${site.url}/images/og/og-default.jpg`],
     },
   ];
 
@@ -25,6 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     // Öne çıkan hizmetler ticari niyeti daha yüksek sayfalar
     priority: s.featured ? 0.8 : 0.7,
+    // Google Görseller sayfayı görselle birlikte değerlendirsin
+    images: [`${site.url}${s.image}`],
   }));
 
   return [...staticRoutes, ...serviceRoutes];

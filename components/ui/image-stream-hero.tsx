@@ -226,7 +226,12 @@ export function ImageStreamHero({
                     <img
                       src={img.src}
                       alt={img.alt ?? ""}
-                      loading="lazy"
+                      /* Koridorun ilk turu ilk karede zaten ekranda —
+                         lazy birakmak hero'nun boyanmasini geciktiriyordu.
+                         Gerisi siraya girsin. */
+                      loading={i < images.length ? "eager" : "lazy"}
+                      /* Dekoratif akis; logo ve baslik once yuklensin. */
+                      fetchPriority="low"
                       decoding="async"
                       className="h-full w-full object-cover"
                       draggable={false}

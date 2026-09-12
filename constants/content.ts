@@ -14,12 +14,29 @@ export const clients = [
   "Lojistik Firması",
 ];
 
+export type Testimonial = {
+  initials: string;
+  quote: string;
+  name: string;
+  meta: string;
+};
+
 /**
- * TODO — GERÇEK MÜŞTERİ YORUMLARI
- * Uydurma yorum yazılmaz. Gerçek yorumlar toplanınca burası değiştirilecek;
- * o zamana kadar örnek metinler kullanılmaktadır.
+ * Müşteri yorumları.
+ *
+ * Boş bırakıldı: aşağıdaki metinler örnekti ama sitede gerçek yorumdan
+ * ayırt edilemiyordu. Dizi boşken bölüm ana sayfada hiç render edilmez.
+ *
+ * Gerçek yorum geldikçe aşağıdaki `testimonialFormat` yapısıyla buraya
+ * taşı; bölüm otomatik geri gelir. Müşteriden yayın izni alınmalı.
  */
-export const testimonials = [
+export const testimonials: Testimonial[] = [];
+
+/**
+ * Yalnızca biçim örneği — sitede GÖRÜNMEZ, hiçbir yerde render edilmez.
+ * Gerçek yorumları bu yapıda yazıp yukarıdaki `testimonials` dizisine koy.
+ */
+const testimonialFormat: Testimonial[] = [
   {
     initials: "AY",
     quote:
@@ -42,6 +59,8 @@ export const testimonials = [
     meta: "Mevlüt Yemeği · Bahçelievler",
   },
 ];
+
+void testimonialFormat;
 
 /**
  * Ana sayfa galeri şeridi.

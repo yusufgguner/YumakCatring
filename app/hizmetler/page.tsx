@@ -4,18 +4,41 @@ import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
-import { serviceGroups, servicesByGroup } from "@/constants/services";
+import { services, serviceGroups, servicesByGroup } from "@/constants/services";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { site } from "@/config/site";
+import { breadcrumbSchema, serviceListSchema } from "@/constants/schema";
 
 export const metadata: Metadata = {
   title: "Catering Hizmetlerimiz",
   description:
     "Kurumsal catering, düğün, nişan, mevlüt, kokteyl, fuar, taşımalı ve toplu yemek hizmeti. İstanbul genelinde 17 hizmet alanında tam kapsamlı organizasyon.",
   alternates: { canonical: "/hizmetler" },
+  openGraph: {
+    type: "website",
+    url: `${site.url}/hizmetler`,
+    title: `Catering Hizmetlerimiz | ${site.name}`,
+    description:
+      "İstanbul genelinde 17 catering hizmeti: kurumsal, düğün, nişan, mevlüt, kokteyl, fuar, taşımalı ve toplu yemek.",
+    images: [{ url: "/images/og/og-default.jpg", width: 1200, height: 630 }],
+  },
 };
 
 export default function HizmetlerPage() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            breadcrumbSchema([
+              { name: "Ana Sayfa", path: "/" },
+              { name: "Hizmetler", path: "/hizmetler" },
+            ]),
+            serviceListSchema(services),
+          ],
+        }}
+      />
       <Header />
 
       <main id="main">
@@ -34,7 +57,7 @@ export default function HizmetlerPage() {
             <Reveal kind="fade">
               <nav
                 aria-label="Sayfa yolu"
-                className="text-eyebrow uppercase tracking-[0.2em] text-white/50"
+                className="text-eyebrow uppercase tracking-[0.2em] text-white/65"
               >
                 <Link href="/" className="hover:text-gold-400">
                   Ana Sayfa
@@ -59,7 +82,7 @@ export default function HizmetlerPage() {
           <section
             key={g.id}
             className={`px-5 py-20 md:px-10 md:py-28 ${
-              gi % 2 === 1 ? "bg-beige-50" : ""
+              gi % 2 === 1 ? "bg-beige-100" : ""
             }`}
           >
             <div className="mx-auto max-w-[85rem]">

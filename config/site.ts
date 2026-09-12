@@ -3,10 +3,19 @@
  * Alan adı, marka bilgisi ve iletişim verisi koda gömülmez, buradan okunur.
  */
 
+/**
+ * Canonical taban adresi.
+ * Alan adı henüz bağlanmadıysa NEXT_PUBLIC_SITE_URL ile geçerli
+ * yayın adresine çevir; yoksa canonical yayında olmayan bir alan adını
+ * işaret eder ve sayfalar indekslenmez.
+ */
+const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.yumakcatering.com"
+).replace(/\/+$/, "");
+
 export const site = {
   name: "Yumak Catering",
-  // TODO: gerçek alan adı alınınca güncelle
-  url: "https://www.yumakcatering.com",
+  url: SITE_URL,
   locale: "tr_TR",
   lang: "tr",
   description:
@@ -55,13 +64,24 @@ export const company = {
   },
 } as const;
 
-/** Ana sayfa güven bölümü — TODO: gerçek rakamlarla değiştir */
-export const stats = [
-  { value: 12, suffix: "", label: "Yıllık Tecrübe" },
-  { value: 1200, suffix: "+", label: "Tamamlanan Organizasyon" },
-  { value: 180, suffix: "+", label: "Kurumsal Müşteri" },
-  { value: 250, suffix: "B+", label: "Ağırlanan Misafir" },
-] as const;
+export type Stat = { value: number; suffix: string; label: string };
+
+/**
+ * Ana sayfa güven bölümü — rakamlar.
+ *
+ * Boş bırakıldı: önceki değerler placeholder'dı ama sitede olgu gibi
+ * görünüyordu. Dizi boşken bölüm ana sayfada hiç render edilmez.
+ *
+ * Gerçek rakamları girince bölüm otomatik geri gelir:
+ *
+ *   export const stats: Stat[] = [
+ *     { value: 12,   suffix: "",   label: "Yıllık Tecrübe" },
+ *     { value: 1200, suffix: "+",  label: "Tamamlanan Organizasyon" },
+ *     { value: 180,  suffix: "+",  label: "Kurumsal Müşteri" },
+ *     { value: 250,  suffix: "B+", label: "Ağırlanan Misafir" },
+ *   ];
+ */
+export const stats: Stat[] = [];
 
 export function whatsappUrl(message?: string) {
   const base = `https://wa.me/${company.phone.whatsapp}`;

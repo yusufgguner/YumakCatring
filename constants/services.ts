@@ -9,6 +9,38 @@ export interface Service {
   blurb: string;
   image: string;
   featured?: boolean;
+
+  /* ─────────────────────────────────────────────────────────────
+   * Hizmete ÖZEL içerik — SEO için kritik.
+   *
+   * Şu an 17 hizmet sayfası da 252-256 kelime; içeriğin neredeyse
+   * tamamı ortak şablon. Google bunları birbirinin kopyası sayar ve
+   * büyük bölümünü sıralamaya sokmaz.
+   *
+   * Aşağıdaki alanları doldurduğun hizmetin sayfasında ilgili bölüm
+   * otomatik görünür; boş bıraktıkların hiç render edilmez.
+   * Hedef: hizmet başına 300-500 kelime ÖZGÜN metin.
+   * ───────────────────────────────────────────────────────────── */
+
+  /** 2-3 cümle giriş. Bu hizmeti diğerlerinden ayıran şey ne? */
+  intro?: string;
+
+  /** Kimler için — ör: "150-400 kişilik şirket yıl sonu partileri" */
+  audience?: string[];
+
+  /** Tipik kişi sayısı aralığı — ör: "50 – 800 kişi" */
+  capacity?: string;
+
+  /** Menü yaklaşımı: bu hizmette menü nasıl kurgulanır? */
+  menuApproach?: string;
+
+  /** Bu hizmete özel süreç adımları */
+  process?: { title: string; text: string }[];
+
+  /** Bu hizmete özel sık sorulanlar.
+   *  Not: FAQPage şeması eklenmiyor — Google 7 Mayıs 2026'da FAQ zengin
+   *  sonuçlarını tüm siteler için kaldırdı. İçerik değeri için duruyor. */
+  faq?: { q: string; a: string }[];
 }
 
 export const serviceGroups: { id: ServiceGroup; label: string }[] = [
@@ -82,6 +114,39 @@ export const services: Service[] = [
     group: "ozel-gun",
     blurb: "Doğum günü, yıldönümü ve aile davetlerinde sıcak ve özenli sofralar.",
     image: "/images/galeri-v3/gal-08.jpg",
+
+    /* ── DOLDURMA ŞABLONU ─────────────────────────────────────────
+     * Aşağıdaki yorumu açıp kendi metninle doldur. Doldurduğun alan
+     * sayfada otomatik görünür. Aynısını diğer 16 hizmete uygula.
+     * Fiyat, kapasite, referans gibi verileri sen gir — tahmin yazılmadı.
+     *
+     * intro:
+     *   "İki-üç cümle. Bu hizmeti diğerlerinden ayıran şey ne? " +
+     *   "Hangi problemi çözüyorsuńuz?",
+     *
+     * audience: [
+     *   "Ör: 150-400 kişilik şirket yıl sonu partileri",
+     *   "Ör: Bayi ve çalışan buluşmaları",
+     * ],
+     *
+     * capacity: "Ör: 50 – 800 kişi",
+     *
+     * menuApproach:
+     *   "Bu hizmette menü nasıl kurgulanıyor? Açık büfe mi, tabak servis mi? " +
+     *   "Kaç çeşit? Vejetaryen/glutensiz seçenek var mı?",
+     *
+     * process: [
+     *   { title: "Keşif", text: "Mekân ve kişi sayısına göre ne yapıyorsunuz?" },
+     *   { title: "Menü onayı", text: "Tadım var mı? Kaç gün önce kesinleşiyor?" },
+     *   { title: "Kurulum", text: "Etkinlikten kaç saat önce ekip mekânda?" },
+     *   { title: "Servis", text: "Kaç personel? Servis akışı nasıl?" },
+     * ],
+     *
+     * faq: [
+     *   { q: "Bu hizmette minimum kişi sayısı nedir?", a: "..." },
+     *   { q: "Mekânı siz mi ayarlıyorsunuz?", a: "..." },
+     * ],
+     * ──────────────────────────────────────────────────────────── */
   },
   {
     slug: "mevlut-yemekleri",
