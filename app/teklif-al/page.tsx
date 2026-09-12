@@ -84,7 +84,7 @@ export default function TeklifAlPage() {
                 aria-label="Sayfa yolu"
                 className="text-eyebrow uppercase tracking-[0.2em] text-white/65"
               >
-                <Link href="/" className="hover:text-gold-400">
+                <Link href="/" className="-my-3 inline-block py-3 hover:text-gold-400">
                   Ana Sayfa
                 </Link>
                 <span className="mx-3">/</span>
@@ -104,16 +104,19 @@ export default function TeklifAlPage() {
         </section>
 
         <section className="bg-beige-100 px-5 py-20 md:px-10 md:py-28">
-          <div className="mx-auto grid max-w-[85rem] gap-12 lg:grid-cols-[1fr_20rem] lg:gap-16">
+          {/* 1024'te form + 20rem yan kolon formu ~560px'e sıkıştırıyordu.
+              xl altında form ana sayfadaki gibi 3xl genişlikte ortalanır,
+              "Doğrudan Ulaşın" altına iner; xl ve üstü eski iki kolon. */}
+          <div className="mx-auto grid max-w-3xl gap-14 xl:max-w-[85rem] xl:grid-cols-[1fr_20rem] xl:gap-16">
             <Reveal kind="rise">
               <QuoteForm />
             </Reveal>
 
             <Reveal kind="fade" delay={0.1}>
-              <aside className="lg:sticky lg:top-32">
+              <aside className="xl:sticky xl:top-32">
                 <p className="eyebrow text-gold-600">İletişim</p>
                 <h2 className="mt-4 text-[1.5rem] md:text-[1.75rem]">Doğrudan Ulaşın</h2>
-                <ul className="mt-8 space-y-6">
+                <ul className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-1">
                   {contactItems.map(({ Icon, label, value, href, external }) => (
                     <li key={label} className="flex gap-4">
                       <span className="flex size-11 shrink-0 items-center justify-center rounded-full border border-gold-600/35 text-gold-600">
@@ -125,7 +128,7 @@ export default function TeklifAlPage() {
                           <a
                             href={href}
                             {...(external ? { target: "_blank", rel: "noopener" } : {})}
-                            className="mt-1 inline-flex min-h-[28px] items-center text-sm font-medium text-ink-950 transition-colors hover:text-gold-600"
+                            className="-mb-2 -mt-1 inline-flex min-h-[44px] items-center text-sm font-medium text-ink-950 transition-colors hover:text-gold-600"
                           >
                             {value}
                           </a>

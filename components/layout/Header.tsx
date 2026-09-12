@@ -130,8 +130,10 @@ export function Header() {
       </header>
 
       {/* Mobil çekmece */}
+      {/* z-[45]: ana sayfadaki sabit hızlı iletişim çubuğu (z-40) çekmecenin
+          alt butonlarını örtüyordu. Header (z-50) yine üstte kalır. */}
       <div
-        className={`fixed inset-0 z-40 overflow-y-auto bg-white px-6 pb-10 pt-24 transition-all duration-300 lg:hidden ${
+        className={`fixed inset-0 z-[45] overflow-y-auto overscroll-contain bg-white px-6 pb-[calc(2.5rem+env(safe-area-inset-bottom))] pt-24 transition-all duration-300 lg:hidden ${
           open ? "visible opacity-100" : "invisible -translate-y-2 opacity-0"
         }`}
       >

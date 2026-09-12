@@ -120,11 +120,11 @@ export default async function ServicePage({ params }: Params) {
                 aria-label="Sayfa yolu"
                 className="text-eyebrow uppercase tracking-[0.2em] text-white/65"
               >
-                <Link href="/" className="hover:text-gold-400">
+                <Link href="/" className="-my-3 inline-block py-3 hover:text-gold-400">
                   Ana Sayfa
                 </Link>
                 <span className="mx-3">/</span>
-                <Link href="/hizmetler" className="hover:text-gold-400">
+                <Link href="/hizmetler" className="-my-3 inline-block py-3 hover:text-gold-400">
                   Hizmetler
                 </Link>
                 <span className="mx-3">/</span>
@@ -149,7 +149,7 @@ export default async function ServicePage({ params }: Params) {
         </section>
 
         {/* Hizmete dahil */}
-        <section className="px-5 py-24 md:px-10 md:py-32">
+        <section className="px-5 py-20 md:px-10 md:py-32">
           <div className="mx-auto max-w-[85rem]">
             <Reveal kind="fade" className="mx-auto max-w-2xl text-center">
               <div className="ornament">
@@ -164,7 +164,7 @@ export default async function ServicePage({ params }: Params) {
             </Reveal>
 
             <Stagger
-              className="mx-auto mt-16 grid max-w-4xl gap-x-10 gap-y-5 sm:grid-cols-2"
+              className="mx-auto mt-12 grid max-w-4xl gap-x-10 gap-y-5 sm:grid-cols-2 md:mt-16"
               step={0.05}
             >
               {includes.map((item) => (
@@ -183,7 +183,7 @@ export default async function ServicePage({ params }: Params) {
         <ServiceDetail service={service} />
 
         {/* CTA bandı */}
-        <section className="relative overflow-hidden bg-ink-950 px-5 py-24 md:px-10 md:py-28">
+        <section className="relative overflow-hidden bg-ink-950 px-5 py-20 md:px-10 md:py-28">
           <Image
             src="/images/genel/ekip.jpg"
             alt=""
@@ -229,7 +229,7 @@ export default async function ServicePage({ params }: Params) {
         </section>
 
         {/* Diğer hizmetler */}
-        <section className="bg-beige-100 px-5 py-24 md:px-10 md:py-32">
+        <section className="bg-beige-100 px-5 py-20 md:px-10 md:py-32">
           <div className="mx-auto max-w-[85rem]">
             <Reveal kind="fade" className="text-center">
               <div className="ornament">
@@ -240,7 +240,7 @@ export default async function ServicePage({ params }: Params) {
             </Reveal>
 
             <Stagger
-              className="mt-16 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4"
+              className="mt-12 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-8 sm:gap-y-12 md:mt-16 lg:grid-cols-4"
               step={0.06}
             >
               {others.map((s) => (
@@ -251,11 +251,11 @@ export default async function ServicePage({ params }: Params) {
                         src={s.image}
                         alt={s.name}
                         fill
-                        sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw"
+                        sizes="(max-width:1024px) 50vw, 25vw"
                         className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
                       />
                     </div>
-                    <h3 className="mt-6 text-[0.9375rem] transition-colors group-hover:text-gold-600">
+                    <h3 className="mt-4 text-[0.9375rem] transition-colors group-hover:text-gold-600 sm:mt-6">
                       {s.name}
                     </h3>
                   </Link>

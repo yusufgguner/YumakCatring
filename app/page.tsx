@@ -176,7 +176,7 @@ export default function Home() {
         ) : null}
 
         {/* ═══════════════ 3. NEDEN YUMAK ═══════════════ */}
-        <section id="hakkimizda" className="px-5 py-24 md:px-10 md:py-32">
+        <section id="hakkimizda" className="px-5 py-20 md:px-10 md:py-32">
           <div className="mx-auto max-w-[85rem]">
             <Reveal kind="fade" className="mx-auto max-w-2xl text-center">
               <div className="ornament">
@@ -190,7 +190,7 @@ export default function Home() {
               </p>
             </Reveal>
 
-            <Stagger className="mt-20 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
+            <Stagger className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 md:mt-20 md:gap-y-14 lg:grid-cols-4">
               {reasons.map(({ Icon, title, text }) => (
                 <StaggerItem key={title} className="text-center">
                   <div className="mx-auto flex size-16 items-center justify-center rounded-full border border-gold-600/35 text-gold-600">
@@ -205,7 +205,7 @@ export default function Home() {
         </section>
 
         {/* ═══════════════ 4. HİZMETLER ═══════════════ */}
-        <section id="hizmetler" className="bg-beige-100 px-5 py-24 md:px-10 md:py-32">
+        <section id="hizmetler" className="bg-beige-100 px-5 py-20 md:px-10 md:py-32">
           <div className="mx-auto max-w-[85rem]">
             <Reveal kind="fade" className="mx-auto max-w-2xl text-center">
               <div className="ornament">
@@ -220,13 +220,14 @@ export default function Home() {
             </Reveal>
 
             <Stagger
-              className="mt-20 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4"
+              className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2 md:mt-20 md:gap-y-14 lg:grid-cols-4"
               step={0.06}
             >
               {featuredServices.map((s) => (
                 <StaggerItem key={s.slug}>
                   <Link href={`/hizmetler/${s.slug}`} className="group block">
-                    <div className="relative aspect-[4/5] overflow-hidden bg-ink-200">
+                    {/* Tek kolonda 4/5 kart ekranı dolduruyordu; telefonda yatay oran */}
+                    <div className="relative aspect-[4/3] overflow-hidden bg-ink-200 sm:aspect-[4/5]">
                       <Image
                         src={s.image}
                         alt={s.name}
@@ -264,7 +265,7 @@ export default function Home() {
         </section>
 
         {/* ═══════════════ 5. ÇALIŞMA SÜRECİ ═══════════════ */}
-        <section id="organizasyonlar" className="relative overflow-hidden bg-ink-950 px-5 py-24 md:px-10 md:py-32">
+        <section id="organizasyonlar" className="relative overflow-hidden bg-ink-950 px-5 py-20 md:px-10 md:py-32">
           <Image
             src="/images/genel/cta.jpg"
             alt=""
@@ -284,7 +285,7 @@ export default function Home() {
             </Reveal>
 
             <Stagger
-              className="mt-20 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4"
+              className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 md:mt-20 md:gap-y-12 lg:grid-cols-4"
               step={0.06}
             >
               {steps.map(([title, text], i) => (
@@ -301,7 +302,7 @@ export default function Home() {
         </section>
 
         {/* ═══════════════ 6. GALERİ ŞERİDİ ═══════════════ */}
-        <section id="galeri" className="py-24 md:py-32">
+        <section id="galeri" className="py-20 md:py-32">
           <Reveal kind="fade" className="mx-auto max-w-2xl px-5 text-center md:px-10">
             <div className="ornament">
               <i />
@@ -310,7 +311,7 @@ export default function Home() {
             <h2 className="mt-4">Sofranın Hâli</h2>
           </Reveal>
 
-          <div className="mt-16 grid grid-cols-2 gap-px bg-ink-200 md:grid-cols-4">
+          <div className="mt-12 grid grid-cols-2 gap-px bg-ink-200 md:mt-16 md:grid-cols-4">
             {galleryItems.map((g) => (
               <div
                 key={g.file}
@@ -332,7 +333,7 @@ export default function Home() {
         <section className="border-y border-ink-200 bg-beige-100 px-5 py-16 md:px-10">
           <Reveal kind="fade" className="mx-auto max-w-[85rem] text-center">
             <p className="eyebrow">Bizi Tercih Edenler</p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 md:gap-y-6">
               {clients.map((c) => (
                 <span
                   key={c}
@@ -349,7 +350,7 @@ export default function Home() {
             Gerçek yorumlar constants/content.ts > testimonials içine
             girilene kadar gizli. */}
         {testimonials.length > 0 ? (
-        <section className="px-5 py-24 md:px-10 md:py-32">
+        <section className="px-5 py-20 md:px-10 md:py-32">
           <div className="mx-auto max-w-[85rem]">
             <Reveal kind="fade" className="mx-auto max-w-2xl text-center">
               <div className="ornament">
@@ -359,7 +360,7 @@ export default function Home() {
               <h2 className="mt-4">Müşteri Yorumları</h2>
             </Reveal>
 
-            <Stagger className="mt-20 grid gap-12 md:grid-cols-3" step={0.08}>
+            <Stagger className="mt-14 grid gap-12 md:mt-20 md:grid-cols-3" step={0.08}>
               {testimonials.map((t) => (
                 <StaggerItem key={t.name} className="text-center">
                   <div className="mx-auto flex size-20 items-center justify-center rounded-full border border-ink-200 bg-white font-[family-name:var(--font-display)] text-xl tracking-wide text-gold-600">
@@ -382,7 +383,7 @@ export default function Home() {
         ) : null}
 
         {/* ═══════════════ 9. SSS ═══════════════ */}
-        <section className="bg-beige-100 px-5 py-24 md:px-10 md:py-32">
+        <section className="bg-beige-100 px-5 py-20 md:px-10 md:py-32">
           <div className="mx-auto max-w-3xl">
             <Reveal kind="fade" className="text-center">
               <div className="ornament">
@@ -398,7 +399,9 @@ export default function Home() {
         </section>
 
         {/* ═══════════════ 10. BRIEF + İLETİŞİM ═══════════════ */}
-        <section id="iletisim" className="bg-beige-100 px-5 py-24 md:px-10 md:py-32">
+        {/* SSS ile aynı zemin: iki bölümün alt+üst boşluğu üst üste binip
+            192-256px boş bej alan bırakıyordu — üst boşluk kısaltıldı. */}
+        <section id="iletisim" className="bg-beige-100 px-5 pb-20 pt-6 md:px-10 md:pb-32 md:pt-10">
           <div className="mx-auto max-w-3xl text-center">
             <Reveal kind="fade">
               <div className="ornament">
@@ -433,7 +436,7 @@ export default function Home() {
       >
         <a
           href={company.phone.href}
-          className="flex min-h-[58px] flex-col items-center justify-center gap-1 text-[0.625rem] font-medium uppercase tracking-[0.16em] text-ink-700"
+          className="flex min-h-[58px] flex-col items-center justify-center gap-1 text-eyebrow font-medium uppercase leading-none tracking-[0.12em] text-ink-700"
         >
           <Phone size={17} strokeWidth={1.5} />
           Ara
@@ -442,14 +445,14 @@ export default function Home() {
           href={whatsappUrl()}
           target="_blank"
           rel="noopener"
-          className="flex min-h-[58px] flex-col items-center justify-center gap-1 text-[0.625rem] font-medium uppercase tracking-[0.16em] text-ink-700"
+          className="flex min-h-[58px] flex-col items-center justify-center gap-1 text-eyebrow font-medium uppercase leading-none tracking-[0.12em] text-ink-700"
         >
           <MessageCircle size={17} strokeWidth={1.5} />
           WhatsApp
         </a>
         <a
           href="#iletisim"
-          className="flex min-h-[58px] flex-col items-center justify-center gap-1 bg-gold-600 text-[0.625rem] font-medium uppercase tracking-[0.16em] text-white"
+          className="flex min-h-[58px] flex-col items-center justify-center gap-1 bg-gold-600 text-eyebrow font-medium uppercase leading-none tracking-[0.12em] text-white"
         >
           <ArrowRight size={17} strokeWidth={1.5} />
           Teklif Al

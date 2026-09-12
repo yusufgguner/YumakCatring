@@ -21,7 +21,7 @@ export function ServiceDetail({ service }: { service: Service }) {
   return (
     <>
       {hasOverview ? (
-        <section className="bg-beige-100 px-5 py-24 md:px-10 md:py-32">
+        <section className="bg-beige-100 px-5 py-20 md:px-10 md:py-32">
           <div className="mx-auto max-w-[85rem]">
             <Reveal kind="fade" className="mx-auto max-w-2xl text-center">
               <div className="ornament">
@@ -37,9 +37,9 @@ export function ServiceDetail({ service }: { service: Service }) {
             </Reveal>
 
             {(audience?.length || capacity || menuApproach) ? (
-              <div className="mx-auto mt-16 grid max-w-4xl gap-8 md:grid-cols-2">
+              <div className="mx-auto mt-12 grid max-w-4xl gap-6 md:mt-16 md:grid-cols-2 md:gap-8">
                 {audience?.length ? (
-                  <Reveal kind="rise" className="bg-white p-8">
+                  <Reveal kind="rise" className="bg-white p-6 sm:p-8">
                     <h3 className="text-base">Kimler İçin</h3>
                     <ul className="mt-5 space-y-3">
                       {audience.map((a) => (
@@ -55,7 +55,7 @@ export function ServiceDetail({ service }: { service: Service }) {
                 ) : null}
 
                 {(capacity || menuApproach) ? (
-                  <Reveal kind="rise" delay={0.08} className="bg-white p-8">
+                  <Reveal kind="rise" delay={0.08} className="bg-white p-6 sm:p-8">
                     {capacity ? (
                       <div className="flex items-start gap-4">
                         <Users size={18} strokeWidth={1.5} className="mt-1 shrink-0 text-gold-600" />
@@ -87,7 +87,7 @@ export function ServiceDetail({ service }: { service: Service }) {
       ) : null}
 
       {process?.length ? (
-        <section className="px-5 py-24 md:px-10 md:py-32">
+        <section className="px-5 py-20 md:px-10 md:py-32">
           <div className="mx-auto max-w-[85rem]">
             <Reveal kind="fade" className="mx-auto max-w-2xl text-center">
               <div className="ornament">
@@ -97,10 +97,10 @@ export function ServiceDetail({ service }: { service: Service }) {
               <h2 className="mt-4">Tarihten Servise</h2>
             </Reveal>
 
-            <Stagger className="mx-auto mt-16 grid max-w-5xl gap-10 md:grid-cols-2" step={0.06}>
+            <Stagger className="mx-auto mt-12 grid max-w-5xl gap-10 md:mt-16 md:grid-cols-2" step={0.06}>
               {process.map((step, i) => (
                 <StaggerItem key={step.title}>
-                  <div className="flex gap-6">
+                  <div className="flex gap-4 sm:gap-6">
                     <span className="font-[family-name:var(--font-display)] text-2xl text-gold-600">
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -117,7 +117,7 @@ export function ServiceDetail({ service }: { service: Service }) {
       ) : null}
 
       {faq?.length ? (
-        <section className="bg-beige-100 px-5 py-24 md:px-10 md:py-32">
+        <section className="bg-beige-100 px-5 py-20 md:px-10 md:py-32">
           <div className="mx-auto max-w-3xl">
             <Reveal kind="fade" className="text-center">
               <div className="ornament">

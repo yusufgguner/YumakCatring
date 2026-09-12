@@ -36,8 +36,10 @@ const BUDGET_OPTIONS = [
 
 type Errors = Partial<Record<"event" | "people" | "date" | "name" | "phone" | "consent", string>>;
 
+// Telefonda 16px altı yazı boyutu iOS Safari'de odaklanınca sayfayı
+// (iPad dahil) yakınlaştırıyor; lg altında 16px, üstünde tasarımdaki 15px.
 const inputClass =
-  "w-full border bg-white px-4 py-3 text-sm text-ink-950 outline-none transition-colors placeholder:text-ink-300 focus:border-gold-600";
+  "w-full border bg-white px-4 py-3 text-[1rem] text-ink-950 lg:text-sm outline-none transition-colors placeholder:text-ink-300 focus:border-gold-600";
 
 function borderFor(error?: string) {
   return error ? "border-red-500" : "border-ink-300";
@@ -266,7 +268,7 @@ export function QuoteForm() {
             href={sentUrl}
             target="_blank"
             rel="noopener"
-            className="flex min-h-[54px] flex-1 items-center justify-center gap-3 bg-gold-600 px-8 text-eyebrow font-medium uppercase tracking-[0.24em] text-white transition-colors duration-200 hover:bg-gold-700"
+            className="flex min-h-[54px] flex-1 items-center justify-center gap-3 bg-gold-600 px-4 text-center text-eyebrow sm:px-8 font-medium uppercase tracking-[0.24em] text-white transition-colors duration-200 hover:bg-gold-700"
           >
             <MessageCircle size={15} strokeWidth={1.5} />
             WhatsApp Açılmadıysa Tıklayın
@@ -573,6 +575,7 @@ export function QuoteForm() {
       <div className="mt-10 flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
         {step > 0 ? (
           <button
+            key="geri"
             type="button"
             onClick={() => goTo(step - 1)}
             className="flex min-h-[54px] items-center justify-center gap-3 border border-ink-300 px-8 text-eyebrow font-medium uppercase tracking-[0.24em] text-ink-700 transition-colors duration-200 hover:border-ink-900"
@@ -584,8 +587,12 @@ export function QuoteForm() {
           <span className="hidden sm:block" />
         )}
 
+        {/* key şart: aynı DOM düğümü type="button" → "submit"e dönüşünce
+            2. adımdaki "Devam" tıklaması 3. adımda formu anında gönderip
+            boş alan hatalarını gösteriyordu. */}
         {step < 2 ? (
           <button
+            key="devam"
             type="button"
             onClick={onNext}
             className="flex min-h-[54px] items-center justify-center gap-3 bg-ink-950 px-10 text-eyebrow font-medium uppercase tracking-[0.24em] text-white transition-colors duration-200 hover:bg-gold-600"
@@ -595,8 +602,9 @@ export function QuoteForm() {
           </button>
         ) : (
           <button
+            key="gonder"
             type="submit"
-            className="flex min-h-[54px] items-center justify-center gap-3 bg-gold-600 px-10 text-eyebrow font-medium uppercase tracking-[0.24em] text-white transition-colors duration-200 hover:bg-gold-700"
+            className="flex min-h-[54px] items-center justify-center gap-3 bg-gold-600 px-4 text-eyebrow sm:px-10 font-medium uppercase tracking-[0.24em] text-white transition-colors duration-200 hover:bg-gold-700"
           >
             <MessageCircle size={15} strokeWidth={1.5} />
             WhatsApp ile Gönder

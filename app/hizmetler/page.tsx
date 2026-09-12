@@ -59,7 +59,7 @@ export default function HizmetlerPage() {
                 aria-label="Sayfa yolu"
                 className="text-eyebrow uppercase tracking-[0.2em] text-white/65"
               >
-                <Link href="/" className="hover:text-gold-400">
+                <Link href="/" className="-my-3 inline-block py-3 hover:text-gold-400">
                   Ana Sayfa
                 </Link>
                 <span className="mx-3">/</span>
@@ -94,13 +94,14 @@ export default function HizmetlerPage() {
               </Reveal>
 
               <Stagger
-                className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4"
+                className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 md:mt-14 lg:grid-cols-4"
                 step={0.06}
               >
                 {servicesByGroup(g.id).map((s) => (
                   <StaggerItem key={s.slug}>
                     <Link href={`/hizmetler/${s.slug}`} className="group block">
-                      <div className="relative aspect-[4/5] overflow-hidden bg-ink-200">
+                      {/* Telefonda tek kolon 4/5 kart 17 hizmeti ~13.500px'e uzatıyordu */}
+                      <div className="relative aspect-[4/3] overflow-hidden bg-ink-200 sm:aspect-[4/5]">
                         <Image
                           src={s.image}
                           alt={s.name}

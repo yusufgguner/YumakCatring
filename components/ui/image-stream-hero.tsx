@@ -185,10 +185,15 @@ export function ImageStreamHero({
     >
       <style>{css}</style>
 
+      {/* Dikey (telefon/tablet) ekranda cqw küçük kaldığı için kartlar
+          kıymık gibi görünüyordu. Koridor en az yatay bir sahne kadar
+          geniş çizilir, ortalanır; taşan kısmı kökteki overflow-hidden
+          kırpar. Yatay ekranda genişlik zaten %100 — görünüm değişmez. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute top-0 left-1/2 h-full aspect-[6/5] min-w-full -translate-x-1/2"
         style={{
+          containerType: "inline-size",
           perspective: `${p.perspective}cqw`,
           perspectiveOrigin: `50% ${axis}%`,
         }}

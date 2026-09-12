@@ -26,9 +26,11 @@ export function Footer() {
   return (
     <footer className="bg-ink-950 pb-[env(safe-area-inset-bottom)] text-white/65 lg:pb-0">
       <div className="mx-auto max-w-[85rem] px-5 py-20 md:px-10">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        {/* lg altında tek kolon footer'ı ~1400px uzatıyordu: iki hizmet
+            sütunu yan yana (tablette iletişim de), marka tam genişlik. */}
+        <div className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-3 md:gap-x-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-x-12">
           {/* Marka */}
-          <div>
+          <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <Image
               src="/images/logo/logo-light.png"
               alt={site.name}
@@ -78,7 +80,7 @@ export function Footer() {
           ))}
 
           {/* İletişim */}
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <p className="eyebrow text-gold-400">İletişim</p>
             <ul className="mt-5 space-y-4 text-sm">
               <li className="flex items-center gap-3">
